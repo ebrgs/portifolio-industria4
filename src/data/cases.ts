@@ -1,3 +1,12 @@
+type CaseImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+  preview?: "left-square";
+};
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -8,7 +17,8 @@ export type CaseStudy = {
   solution: string;
   steps: string[];
   results: string[];
-  images: { src: string; alt: string; caption: string; width: number; height: number }[];
+  thumbnail?: Pick<CaseImage, "src" | "alt">;
+  images: CaseImage[];
   repository: string;
 };
 
@@ -53,8 +63,11 @@ export const cases: CaseStudy[] = [
       "Na demonstração fictícia, quatro arquivos e 72 linhas são analisados.",
       "O processamento entrega 67 registros válidos e identifica cinco inconsistências para correção."
     ],
+    thumbnail: { src: "/cases/capa-automacao-relatorios.png", alt: "Ilustração do fluxo de planilhas para relatórios automatizados" },
     images: [
-      { src: "/cases/capa-automacao-relatorios.png", alt: "Ilustração do fluxo de planilhas para relatórios automatizados", caption: "Ilustração do fluxo de consolidação", width: 1672, height: 941 }
+      { src: "/cases/resumo-operacional-relatorios.png", alt: "Planilha de resumo operacional com quatro arquivos lidos, 72 linhas analisadas, 67 registros válidos e cinco inconsistências", caption: "Resumo operacional gerado automaticamente no Excel", width: 1837, height: 921, preview: "left-square" },
+      { src: "/cases/inconsistencias-relatorios.png", alt: "Planilha de inconsistências mostrando arquivo, linha, campo, problema e ação para cinco registros descartados", caption: "Inconsistências identificadas, com origem e motivo de cada descarte", width: 1877, height: 656 },
+      { src: "/cases/interface-automacao-relatorios.png", alt: "Interface da automação de relatórios com seleção de pasta e botão para processar as planilhas", caption: "Interface para escolher a pasta e processar os relatórios", width: 1021, height: 732 }
     ],
     repository: "https://github.com/ebrgs/automacao-relatorios-python-excel"
   },

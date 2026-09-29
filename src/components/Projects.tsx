@@ -17,7 +17,7 @@ export default function Projects() {
           {cases.map((project) => (
             <article key={project.slug} className="group flex flex-col overflow-hidden bg-brand-gray/40 border border-brand-cyan/20 rounded-sm hover:border-brand-cyan/60 transition-all hover:shadow-[0_0_30px_rgba(0,246,255,0.12)]">
               <Link href={`/cases/${project.slug}`} className="relative block aspect-[16/9] overflow-hidden bg-brand-gray" aria-label={`Ver case: ${project.title}`}>
-                <Image src={project.images[0].src} alt={project.images[0].alt} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+                <Image src={project.thumbnail?.src ?? project.images[0].src} alt={project.thumbnail?.alt ?? project.images[0].alt} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-[1.03] transition-transform duration-500" />
               </Link>
               <div className="p-7 flex flex-col flex-1">
                 <p className="text-brand-cyan font-mono text-xs uppercase tracking-widest mb-3">{project.category}</p>

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${project.title} | Elias Borges`,
     description: project.summary,
-    openGraph: { images: [project.images[0].src] }
+    openGraph: { images: [project.thumbnail?.src ?? project.images[0].src] }
   };
 }
 
@@ -58,7 +58,7 @@ export default async function CasePage({ params }: Props) {
 
           <section className="mb-20 bg-brand-cyan/5 border border-brand-cyan/25 p-8 md:p-10 rounded-sm"><p className="font-mono text-brand-cyan text-sm mb-3">05 / ENTREGA</p><h2 className="text-3xl font-bold text-brand-light mb-7">Resultado da demonstração</h2><ul className="grid md:grid-cols-2 gap-6">{project.results.map((result) => <li key={result} className="flex gap-3 items-start text-brand-light/75 leading-relaxed"><CheckCircle2 className="text-brand-cyan shrink-0 mt-1" size={20} aria-hidden="true" />{result}</li>)}</ul><p className="text-brand-light/45 text-sm mt-7">Este é um projeto de portfólio com dados fictícios; os números descrevem a demonstração, não um resultado de cliente.</p></section>
 
-          <section className="mb-16"><p className="font-mono text-brand-cyan text-sm mb-3">06 / VISUAL</p><h2 className="text-3xl font-bold text-brand-light mb-8">Imagens do projeto</h2><div className="grid gap-8">{project.images.map((item) => <figure key={item.src} className="overflow-hidden bg-brand-gray/40 border border-brand-cyan/20 rounded-sm"><Image src={item.src} alt={item.alt} width={item.width} height={item.height} sizes="(max-width: 1280px) 100vw, 1200px" className="w-full h-auto" /><figcaption className="px-5 py-4 text-brand-light/50 text-sm">{item.caption}</figcaption></figure>)}</div></section>
+          <section className="mb-16"><p className="font-mono text-brand-cyan text-sm mb-3">06 / VISUAL</p><h2 className="text-3xl font-bold text-brand-light mb-8">Imagens do projeto</h2><div className="grid gap-8">{project.images.map((item) => <figure key={item.src} className="overflow-hidden bg-brand-gray/40 border border-brand-cyan/20 rounded-sm"><a href={item.src} target="_blank" rel="noreferrer" aria-label={`Abrir imagem completa: ${item.caption}`} className="block">{item.preview === "left-square" ? <div className="relative aspect-square max-w-[920px] mx-auto"><Image src={item.src} alt={item.alt} fill sizes="(max-width: 920px) 100vw, 920px" className="object-cover object-left" /></div> : <Image src={item.src} alt={item.alt} width={item.width} height={item.height} sizes="(max-width: 1280px) 100vw, 1200px" className="w-full h-auto" />}</a><figcaption className="px-5 py-4 text-brand-light/50 text-sm">{item.caption} · <a href={item.src} target="_blank" rel="noreferrer" className="text-brand-cyan hover:text-brand-amber transition-colors">Abrir imagem completa</a></figcaption></figure>)}</div></section>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-brand-light/10">
             <a href={project.repository} target="_blank" rel="noreferrer" className="inline-flex justify-center items-center gap-2 px-6 py-4 bg-brand-cyan text-brand-dark font-bold rounded-sm hover:bg-brand-cyan/90 transition-colors"><ExternalLink size={19} aria-hidden="true" /> Ver código e documentação <ArrowUpRight size={17} aria-hidden="true" /></a>
