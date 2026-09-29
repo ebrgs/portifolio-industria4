@@ -4,7 +4,7 @@ type CaseImage = {
   caption: string;
   width: number;
   height: number;
-  preview?: "left-square";
+  preview?: "left-square" | "left-wide";
 };
 
 export type CaseStudy = {
@@ -88,8 +88,12 @@ export const cases: CaseStudy[] = [
       "Demonstração com 14 PDFs fictícios e 12 documentos classificados pelo tipo.",
       "Três pendências são sinalizadas para revisão; PDFs sem texto selecionável precisam de conferência manual."
     ],
+    thumbnail: { src: "/cases/capa-organizacao-documentos-pdf.png", alt: "Ilustração de documentos PDF classificados em pastas e inventário Excel" },
     images: [
-      { src: "/cases/capa-organizacao-documentos-pdf.png", alt: "Ilustração de documentos PDF classificados em pastas e inventário Excel", caption: "Ilustração do fluxo de organização documental", width: 1672, height: 941 }
+      { src: "/cases/resumo-processamento-pdfs.png", alt: "Resumo no Excel com 14 PDFs encontrados, 12 identificados, três para revisão e gráfico por tipo", caption: "Resumo do processamento e distribuição dos documentos", width: 1911, height: 1020, preview: "left-wide" },
+      { src: "/cases/inventario-documentos-pdfs.png", alt: "Inventário Excel com tipo, número, data, situação e link para as cópias organizadas dos PDFs", caption: "Inventário de documentos com dados extraídos e links para as cópias", width: 1896, height: 828 },
+      { src: "/cases/pendencias-pdfs.png", alt: "Aba de pendências mostrando três PDFs que precisam de revisão e os motivos", caption: "Pendências sinalizadas para revisão manual", width: 1896, height: 525 },
+      { src: "/cases/interface-organizacao-pdfs.png", alt: "Interface da ferramenta de organização de PDFs com seleção de pasta e botão de processamento", caption: "Interface para selecionar a pasta de PDFs e iniciar o processamento", width: 1035, height: 738 }
     ],
     repository: "https://github.com/ebrgs/automacao-documentos-pdf"
   }
